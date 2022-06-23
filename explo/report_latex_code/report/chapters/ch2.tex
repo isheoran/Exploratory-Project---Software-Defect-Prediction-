@@ -1,0 +1,196 @@
+\chapter{Project Work}\label{final}
+
+\section{Software Defect Prediction Using Machine Learning}
+Since the 1990s, software defect prediction studies
+have been using machine learning algorithms to identify fault-prone classes. The problem of software defect prediction is considered as a binary classification problem, where a class is either “defect prone”or “not defect prone”. A module can either contain faults or can be defect free (not defect prone). 
+Machine learning has been applied for both
+predicting the number of faults (i.e., a regression task) and categorization of modules
+into fault-prone and non-fault-prone classes (i.e., binary class classification). In machine
+learning, there are four learning types: supervised, unsupervised, semi-supervised, and
+reinforcement learning. In supervised learning, labeled data are needed to build the models.
+In unsupervised learning, hidden structures in data are discovered by detecting the feature
+correlations. Clustering and dimensionality reduction algorithms are considered under
+the unsupervised learning category.
+
+\pagebreak
+
+\section{Handeling the Imbalaced Data}
+For our analysis on software defect prediction we used 17 datsets out of which 12 are NASA datasets. The number of modules and number of features of each dataset has been listed in the table 2.1 
+
+% \begin{minipage}[t]{3cm}
+%     \begin{itemize}
+%         \item ar1
+%         \item ar3
+%         \item ar4
+%         \item ar5
+%         \item ar6
+%         \newline
+%     \end{itemize}
+% \end{minipage}
+% \begin{minipage}[t]{3cm}
+%     \begin{itemize}
+%         \item cm1
+%         \item JM1
+%         \item kc2
+%         \item KC3
+%     \end{itemize}
+% \end{minipage}
+% \begin{minipage}[t]{3cm}
+%     \begin{itemize}
+%         \item MC1
+%         \item MC2
+%         \item MW1
+%         \item PC1
+%     \end{itemize}
+% \end{minipage}
+% \begin{minipage}[t]{3cm}
+%     \begin{itemize}
+%         \item PC2
+%         \item PC3
+%         \item PC4
+%         \item PC5
+%     \end{itemize}
+% \end{minipage}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Dataset & No. of Modules & No. of Features\\
+    \hline
+    \hline
+    ar1  & 121  & 30  \\
+ \hline
+ ar3  & 63  & 30  \\
+ \hline
+ ar4  & 107  & 30  \\
+ \hline
+ ar5  & 36  & 30  \\
+ \hline
+ ar6  & 101  & 30  \\
+\hline
+ cm1 & 327 & 38  \\
+\hline
+ JM1 & 7782 & 22\\
+\hline
+ kc2 & 522 & 22\\
+\hline
+ KC3 & 194 & 40\\
+\hline
+ MC1 & 1988 & 39\\
+\hline
+ MC2 & 125 & 40\\
+\hline
+ MW1 & 253 & 38\\
+\hline
+ PC1 & 705 & 38\\
+\hline
+ PC2 & 745 & 37\\
+\hline
+ PC3 & 1077 & 38\\
+\hline
+ PC4 & 1287 & 38\\
+\hline
+ PC5 & 1711 & 39\\
+\hline
+    \end{tabular}
+    \caption{Dataset Table}
+\end{table}
+
+There are a number of previous studies which have used NASA data sets for defect prediction. They have demonstrated that 80 percentage of the defects occur in very few modules (20 perc.). This indicates that defective classes are present in minority as compared to non-defective classes, which results in imbalanced datasets. In such cases, the distribution of classes is one-sided, which may result in incorrect prediction of the minority class instances. Although, the minority class instances are low in number, but it is important to classify them correctly. Incorrect prediction of defective classes might result in escape of critical errors leading to bad quality software and higher testing costs. Therefore, it is important to address imbalanced data problem for software defect prediction to improve software quality, to reduce prediction error and for successful deployment of the software.
+
+There are many techniques to handle imbalanced datasets on various levels like data level, algorithm level, cost sensitive level, feature selection level and ensemble level.This study explores data level approach. In data level approach we specifically focus on oversampling methods. 
+\newline
+This simplest approach involves duplicating examples in the minority class, although these examples don’t add any new information to the model. Instead, new examples can be synthesized from the existing examples. This is a type of data augmentation for the minority class and is referred to as the Synthetic Minority Oversampling Technique, or SMOTE for short .\cite{malhotra2019empirical}
+\subsection{SMOTE}
+SMOTE works by selecting examples that are close in the feature space, drawing a line between the examples in the feature space and drawing a new sample at a point along that line.
+Specifically, a random example from the minority class is first chosen. Then k of the nearest neighbors for that example are found (typically k=5). A randomly selected neighbor is chosen and a synthetic example is created at a randomly selected point between the two examples in feature space.
+
+\section{Algorithms}
+In our study we are using both supervised and unsupervised algorithms. The algorithms are - \newline
+
+    \underline{Supervised Algorithms}
+    \begin{itemize}
+        \item Naive Bayes (NB)
+        \item Support Vector Machine (SVM)
+        \item K Nearest Neighbours (KNN)
+        \item Random Forest (RF)
+        \item Logistic Regression (LR)
+        \newline
+    \end{itemize}
+    
+    \underline{Unsupervised Algorithms}
+    \begin{itemize}
+        \item K-means (KMS)
+        \item Mini Batch K-means (MBM)
+        \item Agglomerative Heirarchical Clustering (AHC)
+        \item Balanced iterative reducing and clustering using hierarchies (BIRCH)
+        \item Spectral Clustering (SC)
+        \item Guassian
+        \item Affinity Propagation (AP)
+        \item Ordering Points To Identify Clustering Structure (OPTICS)
+        \item Mean Shift (MS)
+        \item Density-Based Spatial Clustering of Applications with Noise (DBSCAN)
+        \item X -means
+        \newline
+    \end{itemize}
+
+\section{Feature Selection Technique }
+
+To train an optimal model, we need to make sure that we use only the essential features. If we have too many features, the model can capture the unimportant patterns and learn from noise. Apart from choosing the right model for our data, we need to choose the right data to put in our model. 
+Wrapper feature selection methods create many models with different subsets of input features and select those features that result in the best performing model according to a performance metric. These methods are unconcerned with the variable types, although they can be computationally expensive. 
+Recursive Feature Elimination (RFE) is a good example of a wrapper feature selection method.
+
+\subsection{Recursive Feature Elimination (RFE)}
+
+A different machine learning algorithm is given and used in the core of the method, is wrapped by RFE, and used to help select features. This is in contrast to filter-based feature selections that score each feature and select those features with the largest (or smallest) score.
+Technically, RFE is a wrapper-style feature selection algorithm that also uses filter-based feature selection internally.
+RFE works by searching for a subset of features by starting with all features in the training dataset and successfully removing features until the desired number remains.
+This is achieved by fitting the given machine learning algorithm used in the core of the model, ranking features by importance, discarding the least important features, and re-fitting the model. This process is repeated until a specified number of features remains.
+
+\section{Labelling Technique}
+In Unsupervised defect prediction data is divided into two clusters. But we dont know that which cluster is defective and which cluster is non-defective. So for labelling these clusters we are using SFM technique.\cite{zhang2016cross}\newline
+For the methods with predefined cluster number as 2 we first calculates the Sum of Feature values of each Module (SFM), then calculates the Average value of the SFMs (ASFM) for all modules in each cluster. The cluster with larger ASFM is labeled as defective, and another cluster is labeled as non-defective.\newline 
+For the methods without predefined cluster numbers ( multiple-cluster scenario), we first calculated the ASFMs for all clusters and the Mean values of these ASFMs (MASFM). Then, we labeled the clusters whose
+ASFMs are not less than MASFM as defective and labeled other clusters as non-defective. In other words, we used the average values on all features in each cluster to determine it class label.
+
+\section{Evaluation Indicators}
+To measure effectiveness of our models for SDP, we employed
+3 indicators as our performance measurement inluding Accuracy, Matthew Correlation Coefficient (MCC) and F1-score.\cite{xu2021comprehensive} \newline
+We first defined 4 basic terms as follows:
+\begin{itemize}
+    \item True Positive (TP) - These are the number of modules that are defective and correctly identified by a model.
+    \item False Negative (FN) - These are the number of modules that are defective but incorrectly identified by a model.
+    \item True Negative (TN) - These are the number of modules that are non-defective and correctly identified by a model.
+    \item False Postive (FP) - These are the number of modules that are non-defective but incorrectly identified by a model.
+    \newline
+\end{itemize}
+These terms were calculated with the help of confusion matrix. For our indicators we defined two more terms -\newline
+
+\begin{itemize}
+    \item Precision - It is defined as the fraction of relevant examples (true positives) among all of the examples which were predicted to belong in a certain class.
+    \begin{center}
+    $ Precision = \frac{TP}{TP + FP}$
+    \end{center}
+
+    \item Recall - It is defined as the fraction of examples which were predicted to belong to a class with respect to all of the examples that truly belong in the class.
+    \begin{center}
+    $ Recall = \frac{TP}{TP + FN}$
+    \end{center}
+    \newline
+\end{itemize}
+
+1. \underline{Accuracy} - It is defined as the percentage of correct predictions for the test data. It can be calculated easily by dividing the number of correct predictions by the number of total predictions.
+\begin{center}
+    $Accuracy = \frac{TP+TN}{TP+TN+FP+FN}$\newline
+\end{center}
+
+2. \underline{MCC} - With the help of above four terms MCC can be calculated as follows :
+\begin{center}
+$MCC = \frac{TP*TN-FP*FN}{\sqrt(TP+FP)(TP+FN)(TN+FP)(TN+FN)}$ \newline
+\end{center}
+
+3. \underline{F1-score} - The F1-score combines the precision and recall of a classifier into a single metric by taking their harmonic mean. 
+\begin{center}
+    $F1-score = \frac{2*(precision*recall)}{precision + recall}$\newline
+\end{center}

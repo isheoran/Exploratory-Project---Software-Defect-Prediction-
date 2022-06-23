@@ -1,0 +1,17 @@
+\chapter{Introduction}\label{chap1}
+
+\section{Overview}
+
+Software quality is one of the essential aspects of a software. With increasing demand, software designs are becoming more complex, increasing the probability of software defects.
+The defects hidden in software modules threaten the security
+and decrease the reliability of the software product. Therefore, it is essential to fix the defective modules before delivering the product.
+
+\section{Motivation of the Research Work}\label{sec1.1}
+
+Defect fixing is a complex and time-consuming task, and limited testing resources are usually unaffordable for supporting thorough code reviews. This requests
+a prioritization to better analyze the software product.
+In other words, developers and testers should reasonably allocate the limited resources to test the modules that have a high probability to contain defects. To seek for such prioritization, Software Defect Prediction (SDP) is proposed to identify the most defect-prone modules for priority inspection. The most active SDP methods are supervised models which first train a classifier on labeled modules and then use it to determine whether or not the unlabeled modules contain defects. However, the supervised SDP models need the labeled modules of historical data of the current project or external projects which are not always available. In order to conduct defect prediction on unlabeled data, Unsupervised Defect Prediction (UDP) models are possible for this task, as UDP models do not need any labeled data.
+
+\section{Organisation of the Report}\label{sec1.3}
+
+First we have given the breif introduction about Software Defect Prediction. We have used 17 datastes (12 publicly available NASA datasets which are collected from the PROMISE repository). Section 2.2.1 introduces the SMOTE technique for handeling the imbalanced data. We used 5 supervised and 11 unsupervised clustering based algorithms. Next there is description about feature selection technique in which we used Recursive Feature Selection (RFE) for choosing the required features. For unsupervised models labelling was done with the help pf SFM technique. Section 2.6 introduces the evaluation indicators used for our models. Next section reports our experimental results. In last we conclude our report.
